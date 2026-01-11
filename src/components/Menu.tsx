@@ -1,4 +1,7 @@
-const menuItems = [
+import React from 'react'
+
+const Menu = () => {
+  const menuItems = [
   {
     title: "MENU",
     items: [
@@ -112,3 +115,11 @@ const menuItems = [
     ],
   },
 ];
+  return (
+    <div>
+      <h2>this is the menu</h2>
+    </div>
+  )
+}
+
+export default Menu
