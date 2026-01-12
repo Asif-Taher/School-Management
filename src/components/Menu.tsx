@@ -1,6 +1,7 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
-const Menu = () => {
   const menuItems = [
   {
     title: "MENU",
@@ -115,9 +116,24 @@ const Menu = () => {
     ],
   },
 ];
+const Menu = () => {
   return (
-    <div>
-      <h2>this is the menu</h2>
+    <div className='mt-4 text-sm'>
+      {
+        menuItems.map((i)=>(
+          <div key={i.title} className='flex flex-col gap-4'>
+            <span className='hidden lg:block font-light my-4'>{i.title}</span>
+            {
+              i.items.map((item)=>(
+                <Link href={item.href} className='flex gap-2 items-center justify-center lg:justify-start text-gray-500'>
+                <Image src={item.icon} alt={item.label} width={20} height={20}/>
+                <span className="hidden lg:block">{item.label}</span>
+                </Link>
+              ))
+            }
+          </div>
+        ))
+      }
     </div>
   )
 }
