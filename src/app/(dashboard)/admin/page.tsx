@@ -1,4 +1,6 @@
+import Announcments from '@/components/Announcments'
 import CountChart from '@/components/CountChart'
+import EventCalander from '@/components/EventCalander'
 import UserCart from '@/components/UserCart'
 import React from 'react'
 
@@ -16,8 +18,9 @@ const AdminPage = () => {
       <CountChart />
       </div>
       {/* right */}
-      <div className='w-full lg:w-1/3'>
-      <h2>Right</h2>
+      <div className='w-full lg:w-1/3 flex flex-col gap-8'>
+      <EventCalander />
+      <Announcments />
       </div>
     </div>
   )

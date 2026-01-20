@@ -51,7 +51,7 @@ const data = [
 
 const CountChart = () => {
   return (
-    <div>
+    <div className='bg-white rounded-xl w-full h-full p-4'>
         {/* title */}
       <div className='flex justify-between items-center'>
        <h2>Student</h2>
@@ -83,11 +83,19 @@ const CountChart = () => {
         </div>
       </div>
       {/* bottom chart */}
+      <div className='flex justify-between items-center'>
       <div>
-
+      <div className='bg-lamasky rounded-full h-5 w-5'/>
+      <h1>1234</h1>
+      <h2>Boys(55%)</h2>
       </div>
       {/* bottom */}
-      <div></div>
+      <div>
+      <div className='bg-lamasky rounded-full h-5 w-5'/>
+      <h1>1234</h1>
+      <h2>Girls(45%)</h2>
+      </div>
+      </div>
     </div>
   )
 }
