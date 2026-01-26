@@ -1,26 +1,32 @@
 import Pagination from '@/components/Pagination'
 import Table from '@/components/Table'
 import TableSearch from '@/components/TableSearch'
-import { role, subjectsData,} from '@/lib/data'
+import { classesData, lessonsData, role, subjectsData,} from '@/lib/data'
 import { access } from 'fs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-type Subject = {
+type Lesson = {
   id:number;
-  name:string;
-  teachers:string[];
+  subject:string;
+  class: number;
+  teacher: number;
+  supervisor:string;
 }
 
 const columns = [
   {
     header: "Subject Name",
-    accessor: "subject",
+    accessor: "name",
   },
   {
-    header: "Teachers",
-    accessor: "teachers",
+    header: "Class",
+    accessor: "class",
+  },
+  {
+    header: "Teacher",
+    accessor: "teacher",
     className: "hidden md:table-cell",
   },
   {
@@ -29,19 +35,20 @@ const columns = [
   },
 ]
 
-const SubjectPage = () => {
-const renderRow = (item:Subject) => (
+const LessonListPage = () => {
+const renderRow = (item:Lesson) => (
 <tr key={item.id} className='border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamapurple'>
     {/* <Image src={item.photo} alt='' width={40} height={40} 
     className='md:hidden xl:block w-10 h-10 rounded-full object-cover'
     /> */}
-    <td className='flex items-center gap-4 p-4'>{item.name}</td>
-    <td className='hidden md:table-cell'>{item.teachers.join(", ")}</td>
+    <td className='flex items-center gap-4 p-4'>{item.subject}</td>
+    <td>{item.class}</td>
+    <td className='hidden md:table-cell'>{item.teacher}</td>
   <td>
     <div className='flex items-center gap-2'>
       <Link href={`/list/teachers/${item.id}`}>
       <button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamasky'>
-      <Image src='/edit.png' alt='' width={16} height={16}/>
+      <Image src='/view.png' alt='' width={16} height={16}/>
       </button>
       </Link>
      {
@@ -83,7 +90,7 @@ const renderRow = (item:Subject) => (
         </div>
         {/* list */}
         <div>
-          <Table columns={columns} renderRow={renderRow} data={subjectsData}/>
+          <Table columns={columns} renderRow={renderRow} data={lessonsData}/>
         </div>
         {/* pagination */}
        <Pagination />
@@ -91,4 +98,4 @@ const renderRow = (item:Subject) => (
   )
 }
 
-export default SubjectPage
+export default LessonListPage

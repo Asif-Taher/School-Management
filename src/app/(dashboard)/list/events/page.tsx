@@ -1,26 +1,46 @@
 import Pagination from '@/components/Pagination'
 import Table from '@/components/Table'
 import TableSearch from '@/components/TableSearch'
-import { role, subjectsData,} from '@/lib/data'
+import { assignmentsData, eventsData, resultsData, role,} from '@/lib/data'
 import { access } from 'fs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-type Subject = {
+type Event = {
   id:number;
-  name:string;
-  teachers:string[];
+  title:string;
+  class: number;
+  date: string;
+  score: number;
+  startTime: string;
+  endTime: string;
 }
 
 const columns = [
   {
-    header: "Subject Name",
-    accessor: "subject",
+    header: "Title",
+    accessor: "title",
   },
   {
-    header: "Teachers",
-    accessor: "teachers",
+    header: "Class",
+    accessor: "class",
+    className: "hidden md:table-cell",
+
+  },
+  {
+    header: "Date",
+    accessor: "date",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "Start Time",
+    accessor: "startTime",
+    className: "hidden md:table-cell",
+  },
+  {
+    header: "End Time",
+    accessor: "endTime",
     className: "hidden md:table-cell",
   },
   {
@@ -29,19 +49,23 @@ const columns = [
   },
 ]
 
-const SubjectPage = () => {
-const renderRow = (item:Subject) => (
+const EventListPage = () => {
+const renderRow = (item:Event) => (
 <tr key={item.id} className='border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamapurple'>
     {/* <Image src={item.photo} alt='' width={40} height={40} 
     className='md:hidden xl:block w-10 h-10 rounded-full object-cover'
     /> */}
-    <td className='flex items-center gap-4 p-4'>{item.name}</td>
-    <td className='hidden md:table-cell'>{item.teachers.join(", ")}</td>
+    <td className='hidden md:table-cell'>{item.title}</td>
+    <td>{item.class}</td>
+    <td className='hidden md:table-cell'>{item.date}</td>
+    <td className='hidden md:table-cell'>{item.startTime}</td>
+    <td className='hidden md:table-cell'>{item.endTime}</td>
+    <td className='hidden md:table-cell'>{item.date}</td>
   <td>
     <div className='flex items-center gap-2'>
       <Link href={`/list/teachers/${item.id}`}>
       <button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamasky'>
-      <Image src='/edit.png' alt='' width={16} height={16}/>
+      <Image src='/view.png' alt='' width={16} height={16}/>
       </button>
       </Link>
      {
@@ -83,7 +107,7 @@ const renderRow = (item:Subject) => (
         </div>
         {/* list */}
         <div>
-          <Table columns={columns} renderRow={renderRow} data={subjectsData}/>
+          <Table columns={columns} renderRow={renderRow} data={eventsData}/>
         </div>
         {/* pagination */}
        <Pagination />
@@ -91,4 +115,4 @@ const renderRow = (item:Subject) => (
   )
 }
 
-export default SubjectPage
+export default EventListPage

@@ -12,7 +12,7 @@ const Pagination = () => {
         ....
         <button className='px-2 rounded-sm bg-'>10</button>
      </div>
-     <button className='py-2 px-4 bg-slate-200 rounded-md text-xs font-semibold disabled:opacity-45 disabled:cursor-not-allowed'>prev</button>
+     <button className='py-2 px-4 bg-slate-200 rounded-md text-xs font-semibold disabled:opacity-45 disabled:cursor-not-allowed'>Next</button>
     </div>
   )
 }
