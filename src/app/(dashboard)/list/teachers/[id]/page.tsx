@@ -1,10 +1,12 @@
+import Announcments from '@/components/Announcments'
 import BigCalander from '@/components/BigCalander'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
   return (
-    <div className='flex-1 p-4 flex flex-col xl:flex-row'>
+    <div className='flex-1 p-4 flex flex-col xl:flex-row gap-4'>
       {/* left */}
       <div className='w-full xl:w-2/3'>
         {/* top */}
@@ -78,7 +80,17 @@ const page = () => {
       </div>
       {/* right */}
       <div className='w-full xl:w-1/3'>
-      r
+      <div className='bg-white p-4 rounded-md'>
+      <h1 className='text-xl font-semibold'>shortcut</h1>
+      <div className='mt-4 flex gap-4 flex-wrap text-xs text-gray-500'>
+        <Link className='p-4 rounded-md bg-lamaSkayLight' href='/'>Teacher's Classes</Link>
+        <Link className='p-4 rounded-md bg-lamaSkayLight' href='/'>Teacher's Sutdents</Link>
+        <Link className='p-4 rounded-md bg-lamaSkayLight' href='/'>Teacher's Lessons</Link>
+        <Link className='p-4 rounded-md bg-lamaSkayLight' href='/'>Teacher's Exams</Link>
+        <Link className='p-4 rounded-md bg-lamaSkayLight' href='/'>Teacher's Assignments</Link>
+      </div>
+      </div>
+      <Announcments />
       </div>
     </div>
   )
