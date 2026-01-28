@@ -1,3 +1,4 @@
+import FormModel from '@/components/FormModel'
 import Pagination from '@/components/Pagination'
 import Table from '@/components/Table'
 import TableSearch from '@/components/TableSearch'
@@ -59,9 +60,13 @@ const renderRow = (item:Assignment) => (
       </Link>
      {
       role === "admin" && (
-           <button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple'>
-          <Image src='/delete.png' alt='' height={16} width={16}/>
-        </button>
+        //    <button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple'>
+        //   <Image src='/delete.png' alt='' height={16} width={16}/>
+        // </button>
+           <>
+          <FormModel table='assignment' type="update" data={item} />
+          <FormModel table='assignment' type="delete" id={item.id} />
+        </>
       )
      }
 
@@ -86,9 +91,11 @@ const renderRow = (item:Assignment) => (
 
                   {
                     role === "admin" && (
-                        <button className='w-8 h-8 rounded-full bg-lamaYellow flex items-center justify-center'>
-                    <Image src="/plus.png" alt='filter' width={14} height={14} />
-                  </button>
+                  //       <button className='w-8 h-8 rounded-full bg-lamaYellow flex items-center justify-center'>
+                  //   <Image src="/plus.png" alt='filter' width={14} height={14} />
+                  // </button>
+                       <FormModel table='teacher' type="create"/>
+
                     )
                   }
                 </div>
